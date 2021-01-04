@@ -1,3 +1,9 @@
+// dev imports
+import webpack from 'webpack';
+import webpackDevMiddleware from 'webpack-dev-middleware';
+import config from './config/webpack.dev.js';
+
+// express imports
 import express from 'express';
 import cookieParser from 'cookie-parser';
 import methodOverride from 'method-override';
@@ -17,6 +23,20 @@ app.use(express.static('public'));
 app.use(express.static('dist'));
 
 app.use(methodOverride('_method'));
+
+
+const env = process.env.NODE_ENV || 'development';
+
+if( env === 'development' ){
+
+  const compiler = webpack(config)
+
+  app.use(webpackDevMiddleware(compiler, {
+    publicPath: config.output.publicPath,
+    // html only
+    writeToDisk: filePath => /\.html$/.test(filePath),
+  }));
+}
 
 // set the routes
 routes(app);
