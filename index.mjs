@@ -36,7 +36,11 @@ if( env === 'development' ){
     // html only
     writeToDisk: filePath => /\.html$/.test(filePath),
   }));
-  app.use(webpackHotMiddleware(compiler));
+  app.use(webpackHotMiddleware(compiler, {
+    log: false,
+    path: `/__webpack_hmr`,
+    heartbeat: 10 * 1000,
+  }));
 }
 
 // set the routes

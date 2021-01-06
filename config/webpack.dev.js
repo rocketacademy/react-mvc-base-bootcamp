@@ -3,13 +3,12 @@ const common = require('./webpack.common.js');
 const path = require('path');
 
 const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 const webpack = require('webpack');
 
 module.exports = merge(common, {
- entry: {
-    app: [
-      'webpack-hot-middleware/client?reload=true&timeout=1000',
-    ]
+  entry: {
+    main: ['webpack-hot-middleware/client', './src/index.js'],
   },
   mode: 'development',
   devtool: 'inline-source-map',
@@ -32,11 +31,17 @@ module.exports = merge(common, {
     ],
   },
   plugins: [
+    new webpack.HotModuleReplacementPlugin(),
     new ReactRefreshWebpackPlugin({
         overlay: {
           sockIntegration: 'whm',
         }
     }),
-    new webpack.HotModuleReplacementPlugin(),
+    new HtmlWebpackPlugin({
+      // name this file main, so that it does not get automatically requested as a static file
+      filename:'./main.html',
+      template: path.resolve(__dirname, '..', 'src', 'index.html'),
+    }),
+
   ].filter(Boolean),
 });
