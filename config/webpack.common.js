@@ -4,7 +4,9 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   entry: {
-    app: './src/index.js',
+    app: [
+    './src/index.js'
+    ]
   },
   plugins: [
     new MiniCssExtractPlugin(),
@@ -24,15 +26,6 @@ module.exports = {
   },
   module: {
     rules: [
-      {
-        test: /\.(js|mjs|jsx)$/, // regex to see which files to run babel on
-        use: {
-          loader: 'babel-loader',
-          options: {
-            presets: ['@babel/preset-env','@babel/preset-react'],
-          },
-        },
-      },
       {
         test: /\.scss$/,
         use: [

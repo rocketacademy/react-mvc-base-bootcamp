@@ -5,7 +5,7 @@ export default function Counter() {
   const [count, setCount] = useState(0);
 
   return (
-    <div className="counter">
+    <div class="counter">
       <p>The counter says you clicked {count} times</p>
       <button onClick={() => setCount(count + 1)}>
         Click me

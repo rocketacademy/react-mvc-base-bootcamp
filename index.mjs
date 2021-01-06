@@ -1,6 +1,7 @@
 // dev imports
 import webpack from 'webpack';
 import webpackDevMiddleware from 'webpack-dev-middleware';
+import webpackHotMiddleware from 'webpack-hot-middleware';
 import config from './config/webpack.dev.js';
 
 // express imports
@@ -28,7 +29,6 @@ app.use(methodOverride('_method'));
 const env = process.env.NODE_ENV || 'development';
 
 if( env === 'development' ){
-
   const compiler = webpack(config)
 
   app.use(webpackDevMiddleware(compiler, {
@@ -36,6 +36,7 @@ if( env === 'development' ){
     // html only
     writeToDisk: filePath => /\.html$/.test(filePath),
   }));
+  app.use(webpackHotMiddleware(compiler));
 }
 
 // set the routes
