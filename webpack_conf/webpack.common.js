@@ -10,7 +10,7 @@ module.exports = {
     new MiniCssExtractPlugin(),
     new HtmlWebpackPlugin({
       // name this file main, so that it does not get automatically requested as a static file
-      filename:'main.html',
+      filename: 'main.html',
       inject: true,
       template: path.resolve(__dirname, '..', 'src', 'index.html'),
       // a favicon can be included in the head. use this config to point to it
@@ -29,7 +29,7 @@ module.exports = {
         use: {
           loader: 'babel-loader',
           options: {
-            presets: ['@babel/preset-env','@babel/preset-react'],
+            presets: ['@babel/preset-env', '@babel/preset-react'],
           },
         },
       },
