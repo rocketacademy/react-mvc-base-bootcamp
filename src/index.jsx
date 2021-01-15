@@ -10,7 +10,7 @@ console.log('hello');
 function App() {
   return (
     <div className="react">
-      <p>Welcome to my react app!</p>
+      <p>Welcome to my React app!</p>
       <Counter />
     </div>
   );
