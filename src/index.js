@@ -1,10 +1,11 @@
 import './styles.scss';
-console.log('hello');
 
 import React from 'react';
 import { render } from 'react-dom';
 
 import Counter from './components/counter.jsx';
+
+console.log('hello');
 
 function App() {
   return (
@@ -17,5 +18,5 @@ function App() {
 
 render(
   <App />,
-  document.body.appendChild(document.createElement("div"))
+  document.body.appendChild(document.createElement('div')),
 );
