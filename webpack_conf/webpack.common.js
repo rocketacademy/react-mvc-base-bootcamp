@@ -1,10 +1,10 @@
-const path = require('path');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const path = require('path');
 
 module.exports = {
   entry: {
-    app: './src/index.js',
+    app: './src/index.jsx',
   },
   plugins: [
     new MiniCssExtractPlugin(),
