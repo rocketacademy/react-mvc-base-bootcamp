@@ -1,1 +1,1 @@
-# react-mvc-base-swe1
+# Rocket Academy Coding Bootcamp: React MVC Base
